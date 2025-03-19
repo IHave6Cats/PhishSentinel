@@ -1,42 +1,42 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/mytestdb?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: root
-    druid:
-      # ????????
-      initial-size: 5  # ????????
-      max-active: 30  # ?????
-      min-idle: 5   # ?????
-
-      # ?????????????
-      max-wait: 60000  #???????????????1min=60000ms
-      validation-query: SELECT 1 FROM DUAL  #??????????????????????????????????
-      # ??????????????????????
-      min-evictable-idle-time-millis: 300000
-      test-while-idle: true
-      # ??SQL?????????????
-      filters: stat,wall,slf4j
-      # ??DruidStatViewServlet
-      stat-view-servlet:
-        # ???
-        login-username: admin
-        # ????
-        login-password: admin
-        url-pattern: /druid/*
-        # IP???(????????????????)
-        allow: 192.167.10.1,127.0.0.1  # ??????ip??????????
-        reset-enable: false # ????
-        # ?????-???????????????????404
-        enabled: true
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   flyway:
+    enabled: true
+    url: jdbc:mysql://127.0.0.1:3306/mytestdb?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    user: root
+    password: root
+    baseline-on-migrate: true
+    outOfOrder: false
+    createSchemas: true
+    validateMigrationNaming: false
+    ignoreMigrationPatterns: "*:missing"
+    locations: classpath:db/migration
+    placeholders:
+      flyway.databaseType: "MySQL"
+
+  druid:
+    initial-size: 5
+    max-active: 30
+    min-idle: 5
+    max-wait: 60000
+    validation-query: SELECT 1
+    min-evictable-idle-time-millis: 300000
+    test-while-idle: true
+    filters: stat,wall,slf4j
+    stat-view-servlet:
+      login-username: admin
+      login-password: admin
+      url-pattern: /druid/*
+      allow: 127.0.0.1
+      reset-enable: false
       enabled: true
-      baseline-on-migrate: true
-      locations: classpath:db/migration
-
-
 
 mybatis:
-  type-aliases-package: com.lbyqsl.pojo
+  type-aliases-package: com.uts.pojo
+  configuration:
+    map-underscore-to-camel-case: true

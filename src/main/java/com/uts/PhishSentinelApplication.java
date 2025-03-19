@@ -7,9 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @MapperScan("com.uts.mapper")
 public class PhishSentinelApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(PhishSentinelApplication.class, args);
     }
-
 }
