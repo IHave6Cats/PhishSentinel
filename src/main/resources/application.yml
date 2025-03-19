@@ -36,7 +36,8 @@ spring:
       reset-enable: false
       enabled: true
 
-mybatis:
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
   type-aliases-package: com.uts.pojo
   configuration:
     map-underscore-to-camel-case: true

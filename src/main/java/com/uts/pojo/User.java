@@ -1,9 +1,14 @@
 package com.uts.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 @TableName("t_user")
 public class User {
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private String username;
     private String password;
@@ -19,6 +24,7 @@ public class User {
 
     /**
      * 获取
+     * 
      * @return id
      */
     public Integer getId() {
@@ -27,6 +33,7 @@ public class User {
 
     /**
      * 设置
+     * 
      * @param id
      */
     public void setId(Integer id) {
@@ -35,6 +42,7 @@ public class User {
 
     /**
      * 获取
+     * 
      * @return username
      */
     public String getUsername() {
@@ -43,6 +51,7 @@ public class User {
 
     /**
      * 设置
+     * 
      * @param username
      */
     public void setUsername(String username) {
@@ -51,6 +60,7 @@ public class User {
 
     /**
      * 获取
+     * 
      * @return password
      */
     public String getPassword() {
@@ -59,6 +69,7 @@ public class User {
 
     /**
      * 设置
+     * 
      * @param password
      */
     public void setPassword(String password) {
